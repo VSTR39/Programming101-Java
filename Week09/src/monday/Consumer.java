@@ -15,27 +15,20 @@ public class Consumer extends Thread {
 
 	public void run() {
 		while (true) {
-			synchronized (this) {
-				try {
-					Integer x = mQueue.poll();
-					if (x != null) {
-						Random rand = new Random();
-						Thread.sleep(rand.nextInt(2000));
-						System.out.println("Consumer: " + Thread.currentThread().getName() + "just extracted element"
-								+ ":" + x + " from position " + mQueue.getTopOfQueue() + " in the queue.");
-						Thread.sleep(rand.nextInt(2000));
-						notifyAll();
-					} else {
-						System.out.println(
-								"Consumer: " + Thread.currentThread().getName() + " temporary paused consumption.");
-						notifyAll();
-						wait();
-					}
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			try {
+				Integer x = mQueue.poll();
+				Random rand = new Random();
+				 Thread.sleep(rand.nextInt(2000));
+				System.out.println("Consumer: " + Thread.currentThread().getName() + "started production.");
+				System.out.println("Consumer: " + Thread.currentThread().getName() + "just extracted element" + ":" + x
+						+ " from position " + mQueue.getBottomOfQueue() + " in the queue.");
+				Thread.sleep(rand.nextInt(2000));
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
+
 	}
 }

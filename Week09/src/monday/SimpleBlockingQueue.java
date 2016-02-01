@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SimpleBlockingQueue<T> {
 	private AtomicInteger mTopOfQueue;
 	private AtomicInteger mBottomOfQueue;
-	private int mQueueMaxSize = 10;
+	private static int mQueueMaxSize = 10;
 	protected ArrayList<T> mQueue;
 
 	public int getTopOfQueue() {
@@ -49,26 +49,23 @@ public class SimpleBlockingQueue<T> {
 		return result;
 	}
 
-	public boolean put(T e) throws InterruptedException {
-		boolean result = false;
-		if (this.getQueueMaxSize() > this.getTopOfQueue()) {
-			mQueue.add(e);
-			setTopOfQueue(mTopOfQueue.incrementAndGet());
-			result = true;
-		} else {
-			result = false;
+	public synchronized void put(T e) throws InterruptedException {
+		while (this.getQueueMaxSize() == mQueue.size()) {
+			notifyAll();
+			wait();
 		}
-		return result;
+		mQueue.add(e);
+		this.setTopOfQueue(mTopOfQueue.incrementAndGet());
 	}
 
-	public T poll() throws InterruptedException {
+	public synchronized T poll() throws InterruptedException {
 		T result = null;
-		if (0 >= this.getTopOfQueue()) {
-			result = null;
-		} else {
-			setTopOfQueue(mTopOfQueue.decrementAndGet());
-			result = mQueue.remove(getTopOfQueue());
+		while (this.getTopOfQueue() < this.getQueueMaxSize()) {
+			//notify();
+			wait();
 		}
+		result = mQueue.remove(getBottomOfQueue());
+		this.setTopOfQueue(mTopOfQueue.decrementAndGet());
 		return result;
 	}
 

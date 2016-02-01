@@ -1,0 +1,36 @@
+package monday;
+
+import java.util.Random;
+
+public class Consumer extends Thread {
+	private static SimpleBlockingQueue<Integer> mQueue;
+
+	public Consumer() {
+		mQueue = new SimpleBlockingQueue<Integer>();
+	}
+
+	public Consumer(SimpleBlockingQueue<Integer> queue) {
+		mQueue = queue;
+	}
+
+	public void run() {
+		while (true) {
+			try {
+				Integer x = mQueue.poll();
+				if (x != null) {
+					Random rand = new Random();
+					System.out.println("Consumer: " + Thread.currentThread().getName() + "started production.");
+					System.out.println("Consumer: " + Thread.currentThread().getName() + "just extracted element" + ":"
+							+ x + " from position " + mQueue.getTopOfQueue() + " in the queue.");
+				} else {
+					System.out.println(
+							"Consumer: " + Thread.currentThread().getName() + " temporary paused consumption.");
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+}
