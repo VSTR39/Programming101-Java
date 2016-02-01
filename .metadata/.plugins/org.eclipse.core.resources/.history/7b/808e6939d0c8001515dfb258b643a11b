@@ -1,0 +1,10 @@
+package friday;
+
+import java.io.PrintStream;
+
+public class SimpleThreadThatPrintsAMessage extends Thread{
+	public void run(){
+		PrintStream out = System.out;
+		out.println("I am a simple thread that prints a message.");
+	}
+}

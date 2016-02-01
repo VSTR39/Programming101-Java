@@ -1,0 +1,37 @@
+package friday;
+
+import java.io.PrintStream;
+
+public class SimpleThreadThatPrintsAMessage extends Thread{
+	private String mMessage;
+	public SimpleThreadThatPrintsAMessage(String message){
+		setMessage(message);
+	}
+	public SimpleThreadThatPrintsAMessage(){}
+	public String getMessage() {
+		return mMessage;
+	}
+
+	public void setMessage(String mMessage) {
+		this.mMessage = mMessage;
+	}
+
+	public void run(){
+		PrintStream out = System.out;
+		out.println("I am a simple thread that prints a message." +" "+ Thread.currentThread().getName());
+	}
+	public void run(String message){
+		PrintStream out = System.out;
+		out.println("I can print a custom message.Here you go:" + message);
+	}
+	public void start(String message){
+		run(message +" "+ Thread.currentThread().getName());
+	}
+	public static void main(String[] args) {
+		SimpleThreadThatPrintsAMessage thread1 = new SimpleThreadThatPrintsAMessage();
+		thread1.start();
+		SimpleThreadThatPrintsAMessage thread2 = new SimpleThreadThatPrintsAMessage("I told you I can.");
+		thread2.start(thread2.getMessage());
+		
+	}
+}

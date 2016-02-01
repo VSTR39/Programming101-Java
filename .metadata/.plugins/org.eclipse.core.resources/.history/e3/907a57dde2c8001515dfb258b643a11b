@@ -1,0 +1,25 @@
+package monday;
+
+public class Consumer extends Thread {
+	private static SimpleBlockingQueue<Integer> mQueue;
+
+	public Consumer() {
+		mQueue = new SimpleBlockingQueue<Integer>();
+	}
+
+	public Consumer(SimpleBlockingQueue<Integer> queue) {
+		mQueue = queue;
+	}
+
+	public void run() {
+		while (true) {
+			try {
+				System.out.println(Thread.currentThread().getName() + "Consumer " + ": index :" + mQueue.getTopOfQueue()
+						+ ":" + mQueue.poll());
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}

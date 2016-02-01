@@ -1,0 +1,44 @@
+package friday;
+
+import java.io.PrintStream;
+
+public class SimpleRunnableClassThatPrintsAMessage implements Runnable {
+	private String mMessage;
+
+	public SimpleRunnableClassThatPrintsAMessage(String message) {
+		setMessage(message);
+	}
+
+	public String getMessage() {
+		return mMessage;
+	}
+
+	public void setMessage(String mMessage) {
+		this.mMessage = mMessage;
+	}
+
+	public void run() {
+		PrintStream out = System.out;
+		if (getMessage() != null) {
+			out.println("I am a simple thread that prints a message." + " " + Thread.currentThread().getName() + " "
+					+ getMessage());
+		} else {
+			out.println("I am a simple thread that prints a message." + " " + Thread.currentThread().getName());
+		}
+	}
+
+	public static void main(String[] args) {
+		SimpleRunnableClassThatPrintsAMessage simpleRunnableClassThatPrintsAMessage = new SimpleRunnableClassThatPrintsAMessage(
+				"Oh yes I can");
+		Thread thread1 = new Thread(simpleRunnableClassThatPrintsAMessage);
+		thread1.start();
+		/*
+		 * SimpleRunnableClassThatPrintsAMessage simpleRunnableClassThatPrintsAMessage =
+		 *  new SimpleRunnableClassThatPrintsAMessage();
+		 * Thread thread2 = new Thread(simpleRunnableClassThatPrintsAMessage); thread2.start();
+		 * t1.join();
+		 * t2.join();
+		 */
+
+	}
+}

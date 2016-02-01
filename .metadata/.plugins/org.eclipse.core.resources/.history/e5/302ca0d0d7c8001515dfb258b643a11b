@@ -1,0 +1,18 @@
+package friday;
+
+public class SummatorThread extends Thread {
+	private Summator summator;
+
+	public SummatorThread(Summator s) {
+		setSummator(s);
+	}
+
+	public Summator getSummator() {
+		return summator;
+	}
+
+	public void setSummator(Summator summator) {
+		this.summator = summator;
+	}
+
+}

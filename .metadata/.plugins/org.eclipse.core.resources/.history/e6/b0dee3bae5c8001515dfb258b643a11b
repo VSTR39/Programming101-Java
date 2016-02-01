@@ -1,0 +1,35 @@
+package monday;
+
+public class Consumer extends Thread {
+	private static SimpleBlockingQueue<Integer> mQueue;
+
+	public Consumer() {
+		mQueue = new SimpleBlockingQueue<Integer>();
+	}
+
+	public Consumer(SimpleBlockingQueue<Integer> queue) {
+		mQueue = queue;
+	}
+
+	public void run() {
+		while (true) {
+			synchronized (this) {
+				try {
+					Integer x = mQueue.poll();
+					if (x != null) {
+						System.out.println("Consumer: " + Thread.currentThread().getName() + "just extracted element"
+								+ ":" + x + " from position " + mQueue.getTopOfQueue() + " in the queue.");
+					} else {
+						System.out.println(
+								"Consumer: " + Thread.currentThread().getName() + " temporary paused consumption.");
+						notify();
+						wait();
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+package monday;
+
+public class Producer extends Thread{
+	private SimpleBlockingQueue mQueue;
+	
+	public Producer(){
+		mQueue = new SimpleBlockingQueue();
+	}
+	
+	public Producer(SimpleBlockingQueue queue){
+		mQueue = queue;
+	}
+}

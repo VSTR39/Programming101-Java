@@ -1,0 +1,17 @@
+package friday;
+
+import java.io.PrintStream;
+
+public class SimpleRunnableClassThatPrintsAMessage implements Runnable{
+	public void run(){
+		PrintStream out = System.out;
+		out.println("I am a simple runnable class that with the help of a thread can print a message.");
+	}
+	public static void main(String[] args) {
+		SimpleRunnableClassThatPrintsAMessage simpleRunnableClassThatPrintsAMessage = new SimpleRunnableClassThatPrintsAMessage();
+		Thread thread = new Thread(simpleRunnableClassThatPrintsAMessage);
+		thread.start();
+
+		
+	}
+}

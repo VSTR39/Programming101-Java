@@ -3,7 +3,7 @@ package friday;
 import java.util.ArrayList;
 
 public class AccountInformation {
-
+	//comment
 	private enum InterestType {
 		simple("simple"), complex("complex");
 		private String mText;

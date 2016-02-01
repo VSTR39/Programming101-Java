@@ -1,0 +1,26 @@
+INDEX VERSION 1.127+/home/vasil/Programs/Git/Programming101-Java/.metadata/.plugins/org.eclipse.jdt.core
+1868990180.index
+3355419665.index
+3425444460.index
+2037292935.index
+754568050.index
+3140162298.index
+2620393229.index
+3713225276.index
+3179121125.index
+801098355.index
+3158759139.index
+144367471.index
+1722727374.index
+3983236293.index
+3088243923.index
+3410093685.index
+2793018794.index
+189954968.index
+511895598.index
+572670784.index
+520986381.index
+1543437284.index
+1380497359.index
+3390216077.index
+625968985.index

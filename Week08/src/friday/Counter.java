@@ -1,0 +1,24 @@
+package friday;
+
+public class Counter {
+	private int c = 100;
+
+	public Counter(int x) {
+		this.c = x;
+	}
+
+	public //synchronized 
+	void increment() {
+		c++;
+	}
+
+	public //synchronized
+	void decrement() {
+		c--;
+	}
+
+	public int getX() {
+		return c;
+	}
+
+}

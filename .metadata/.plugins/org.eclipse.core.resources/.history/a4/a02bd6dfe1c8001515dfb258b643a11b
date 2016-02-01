@@ -1,0 +1,34 @@
+package monday;
+
+import java.util.Random;
+
+public class Producer extends Thread{
+	private SimpleBlockingQueue<?> mQueue;
+	
+	@SuppressWarnings("rawtypes")
+	public Producer(){
+		mQueue = new SimpleBlockingQueue();
+	}
+	
+	public Producer(SimpleBlockingQueue<? extends Comparable> queue){
+		this.mQueue = queue;
+	}
+	
+	public SimpleBlockingQueue<? extends Comparable> getQueue() {
+		return mQueue;
+	}
+
+	public void setQueue(SimpleBlockingQueue<? extends Comparable> mQueue) {
+		this.mQueue = mQueue;
+	}
+
+	public void run(){
+		Random rand = new Random();
+		Integer random = rand.nextInt(100);
+		while(true){
+			synchronized(this){
+				mQueue.put(random);
+			}
+		}
+	}
+}

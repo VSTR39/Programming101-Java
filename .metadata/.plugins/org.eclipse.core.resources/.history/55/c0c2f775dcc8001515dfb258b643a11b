@@ -1,0 +1,51 @@
+package monday;
+
+import java.util.ArrayList;
+
+public class SimpleBlockingQueue<T> {
+	private int mTopOfQueue;
+	private int mBottomOfQueue;
+	private final int mQueueMaxSize = 10;
+	protected ArrayList<T> mQueue;
+
+	public int getTopOfQueue() {
+		return mTopOfQueue;
+	}
+
+	public void setTopOfQueue(int topOfQueue) {
+		this.mTopOfQueue = topOfQueue;
+	}
+
+	public int getBottomOfQueue() {
+		return mBottomOfQueue;
+	}
+
+	public void setBottomOfQueue(int bottomOfQueue) {
+		this.mBottomOfQueue = bottomOfQueue;
+	}
+
+	public ArrayList<T> getQueue() {
+		return mQueue;
+	}
+
+	public int getQueueMaxSize() {
+		return mQueueMaxSize;
+	}
+
+	public SimpleBlockingQueue() {
+		mQueue = new ArrayList<T>();
+		setTopOfQueue(0);
+		setBottomOfQueue(0);
+	}
+
+	public boolean isEmpty() {
+		boolean result = true;
+		if (mTopOfQueue == mBottomOfQueue) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+}

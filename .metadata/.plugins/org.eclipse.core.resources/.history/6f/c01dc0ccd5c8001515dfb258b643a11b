@@ -1,0 +1,22 @@
+package friday;
+
+public class AtomicCounter {
+	private AtomicInteger c;
+
+	public AtomicCounter(int x) {
+		this.c = new AtomicInteger(x);
+	}
+
+	public void increment() {
+		c++;
+	}
+
+	public void decrement() {
+		c--;
+	}
+
+	public int getX() {
+		return c;
+	}
+
+}
