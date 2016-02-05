@@ -1,0 +1,34 @@
+package wednesday;
+
+import java.util.Random;
+
+public class Consumer extends Thread {
+	private Stack<Integer> mStack;
+
+	public Consumer(Stack<Integer> stack) {
+		mStack = stack;
+	}
+
+	public void run() {
+		synchronized (this) {
+			while (true) {
+				if (mStack.getTopOfStack() > 0) {
+					Integer x = mStack.get();
+					System.out.println("Consumer: " + Thread.currentThread().getName() + "just extracted element" + ":"
+							+ x + " from position " + mStack.getTopOfStack() + " in the queue.");
+					mStack.setTopOfStack((mStack.getTopOfStack() - 1));
+
+				} else {
+					try {
+						notify();
+						wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+
+}

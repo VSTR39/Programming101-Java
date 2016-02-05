@@ -1,0 +1,23 @@
+package wednesday;
+
+import java.util.Random;
+
+public class Producer extends Thread {
+	private Stack<Integer> mStack;
+	public Producer(Stack<Integer> stack) {
+		mStack = stack;
+	}
+
+	
+	public void run() {
+		Random rand = new Random();
+		while (mStack.getTopOfStack() < mStack.getElements()) {
+			int x = rand.nextInt(10_000);
+			mStack.put(x);
+			System.out.println(
+					"Producer " + Thread.currentThread().getName() + " have just put " + x + " into the stack.");
+			mStack.setTopOfStack((mStack.getTopOfStack() + 1));
+			// mCounter.getAndSet(mCounter.incrementAndGet());
+		}
+	}
+}

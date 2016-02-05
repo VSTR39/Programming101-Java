@@ -1,0 +1,11 @@
+package wednesday;
+
+class TestPairs {
+	private int A;
+	private int B;
+
+	public TestPairs(int a, int b) {
+		this.A = a;
+		this.B = b;
+	}
+}

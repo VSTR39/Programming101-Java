@@ -1,0 +1,15 @@
+package friday;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Consumer {
+
+	private AtomicInteger mElementsToBeConsumed;
+	private Memory mMemory;
+
+	public Consumer(Memory memory, int elementsToBeConsumed) {
+		mMemory = memory;
+		mElementsToBeConsumed = new AtomicInteger(elementsToBeConsumed);
+	}
+
+}

@@ -1,0 +1,28 @@
+package wednesday;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Producer {
+	private AtomicInteger mNumberOfElements;
+	private Stack<Integer> mStack;
+	private static AtomicInteger counter = new AtomicInteger(0);
+	
+	public Producer(Stack<Integer> stack){
+		mStack = stack;
+		mNumberOfElements = new AtomicInteger(mStack.getMaxStackSize()/Runtime.getRuntime().availableProcessors());
+		counter = new AtomicInteger(0);
+	}
+	
+	public void setNumberOfElements(int numberOfElements){
+		mNumberOfElements.getAndSet(numberOfElements);
+	}
+	
+	public int getNumberOfElements(){
+		return mNumberOfElements.addAndGet(0);
+	}
+
+
+	public void run() {
+		while(counter < )
+	}
+}

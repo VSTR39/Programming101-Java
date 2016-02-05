@@ -1,0 +1,30 @@
+package wednesday;
+
+public class MeasurementTool {
+	class TestPairs {
+		private int A;
+		private int B;
+
+		public TestPairs(int a, int b) {
+			this.A = a;
+			this.B = b;
+		}
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		int i = 0;
+		int producers = 1;
+		int consumers = 1;
+		int elements = 10_000_000;
+		Stack<Integer> stack = new Stack<Integer>(elements);
+		Producer[] producer = new Producer[producers];
+		Consumer[] consumer = new Consumer[consumers];
+		TestPairs[][] tp = new TestPairs[5][5];
+		while (producers <= 5) {
+			while (consumers <= 5) {
+				tp[producers][consumers] = new TestPairs(producers, consumers);
+			}
+		}
+
+	}
+}

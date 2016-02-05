@@ -1,0 +1,72 @@
+package wednesday;
+
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Stack<T> {
+	private AtomicInteger mTopOfStack;
+	private LinkedList<T> mStack;
+	private static int mMaxStackSize;
+
+	public void setTopOfStack(int topOfStack) {
+		mTopOfStack.getAndSet(topOfStack);
+	}
+
+	public int getTopOfStack() {
+		return mTopOfStack.addAndGet(0);
+	}
+
+	public int getMaxStackSize() {
+		return mMaxStackSize;
+	}
+
+	public static void setMaxStackSize(int mMaxStackSize) {
+		Stack.mMaxStackSize = mMaxStackSize;
+	}
+
+	public Stack() {
+		mStack = new LinkedList();
+		mTopOfStack = new AtomicInteger(0);
+	}
+
+	public Stack(int size) {
+		mStack = new LinkedList();
+		mTopOfStack = new AtomicInteger(0);
+		mMaxStackSize = size;
+	}
+
+	public synchronized void put(T e) {
+		while (mStack.size() == mMaxStackSize) {
+			try {
+				wait();
+				notifyAll();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		mStack.add(e);
+		this.setTopOfStack(mTopOfStack.getAndAdd(1));
+	}
+
+	public boolean isEmpty() {
+		return (0 == mTopOfStack.addAndGet(0));
+	}
+
+	public synchronized T get() {
+		T result = null;
+		while (this.isEmpty()) {
+			// notify();
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		result = mStack.remove(this.getTopOfStack() - 1);
+		this.setTopOfStack(mTopOfStack.decrementAndGet());
+		return result;
+
+	}
+}

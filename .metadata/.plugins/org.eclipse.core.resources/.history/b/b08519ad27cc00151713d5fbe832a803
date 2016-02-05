@@ -1,0 +1,18 @@
+package friday;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class CountOddNumbers {
+	public static void main(String[] args) {
+		int i = 0;
+		ArrayList<Integer> array = new ArrayList<>();
+		Random rand = new Random();
+		for(i=0;i<2_000_000_000;i++){
+			array.add(rand.nextInt(10000));
+			System.out.println(array.get(i));
+		}
+		
+	}
+
+}

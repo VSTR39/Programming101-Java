@@ -1,0 +1,24 @@
+package friday;
+
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Consumer {
+	private AtomicInteger mElementsToBeConsumed;
+	private Memory<Integer> mMemory;
+
+	private boolean isEven(int x) {
+		return (x % 2 == 0);
+	}
+
+	public Consumer(Memory<Integer> memory, int elementsToBeConsumed) {
+		mMemory = memory;
+		mElementsToBeConsumed = new AtomicInteger(elementsToBeConsumed);
+	}
+
+	public Integer consume(int index) throws InterruptedException {
+		Integer result;
+		mMemory.get(index);
+		mElementsToBeConsumed.decrementAndGet();
+	}
+}

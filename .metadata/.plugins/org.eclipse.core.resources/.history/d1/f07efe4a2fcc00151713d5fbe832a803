@@ -1,0 +1,15 @@
+package friday;
+
+public class CountOddNumbers {
+	public static void main(String[] args) {
+		int cores = Runtime.getRuntime().availableProcessors();
+		Memory memory = new Memory();
+
+		Producer[] producers = new Producer[cores / 2];
+		Consumer[] consumers = new Consumer[cores / 2];
+		for (int i = 0; i < cores / 2; i++) {
+
+		}
+	}
+
+}

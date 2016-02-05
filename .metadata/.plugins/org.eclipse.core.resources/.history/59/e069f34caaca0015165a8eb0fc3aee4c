@@ -1,0 +1,20 @@
+package wednesday;
+
+public class MeasurementTool {
+	public static void main(String[] args) throws InterruptedException {
+		int i = 0;
+		int producers = 10;
+		int consumers = 10;
+		int elements = 1000;
+		Stack<Integer> stack = new Stack<Integer>(elements);
+		for (i = 0; i < producers+consumers; i++) {
+			Producer producer = new Producer(stack,producers);
+			producer.start();
+			producer.join();
+			Consumer consumer = new Consumer(stack);
+			consumer.start();
+			consumer.join();
+		}
+
+	}
+}

@@ -1,0 +1,44 @@
+package wednesday;
+
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Producer extends Thread {
+	private AtomicInteger mNumberOfElements;
+	private Stack<Integer> mStack;
+	private static AtomicInteger mCounter = new AtomicInteger(0);
+
+	public Producer(Stack<Integer> stack, int producers) {
+		mStack = stack;
+		mNumberOfElements = new AtomicInteger(mStack.getMaxStackSize() / producers);
+		mCounter = new AtomicInteger(0);
+	}
+
+	public void setNumberOfElements(int numberOfElements) {
+		mNumberOfElements.getAndSet(numberOfElements);
+	}
+
+	public int getNumberOfElements() {
+		return mNumberOfElements.addAndGet(0);
+	}
+
+	public void setCounter(int counter) {
+		mCounter.getAndSet(counter);
+	}
+
+	public int getCounter() {
+		return mCounter.addAndGet(0);
+	}
+
+	public void run() {
+		Random rand = new Random();
+		while (getCounter() < mStack.getMaxStackSize()) {
+			int x = rand.nextInt(10_000);
+			mStack.put(x);
+			System.out.println(
+					"Producer " + Thread.currentThread().getName() + " have just put " + x + " into the stack.");
+			mStack.setTopOfStack((mStack.getTopOfStack() + 1));
+			mCounter.getAndSet(mCounter.incrementAndGet());
+		}
+	}
+}
