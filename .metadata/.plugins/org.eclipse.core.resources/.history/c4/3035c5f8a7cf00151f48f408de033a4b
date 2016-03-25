@@ -1,0 +1,8 @@
+package montag;
+
+public class Options {
+	private String mOption;
+	private boolean mArgumentRequired;
+	private String mOptionArgument;
+	
+}

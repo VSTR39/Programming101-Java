@@ -1,0 +1,38 @@
+INSERT INTO companies(name)VALUES('nashta firma');
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Vasil','vstr93@abv.bg',NULL,'1993-11-17',NULL,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Pesho','lqudas@abv.bg',1,'1999-12-12',1,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Tosho','ludas@abv.bg',1,'1999-11-12',1,	
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('gosho','gludas@abv.bg',1,'1999-10-12',1,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO departments(name,company_id,manager_id)
+VALUES('Financial',(SELECT id FROM companies WHERE name = 'nashta firma'),2);
+INSERT INTO departments(name,company_id,manager_id)
+VALUES('Sales',(SELECT id FROM companies WHERE name = 'nashta firma'),3);
+INSERT INTO departments(name,company_id,manager_id)
+VALUES('Production',(SELECT id FROM companies WHERE name = 'nashta firma'),4);
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('random1','random1@abv.bg',0,'1999-10-01',2,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('random2','random2@abv.bg',0,'1999-10-02',2,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('random3','random3@abv.bg',0,'1999-10-03',2,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('random4','random4@abv.bg',0,'1999-10-04',2,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('random5','random5@abv.bg',0,'1999-10-05',2,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO categories (name,code,company_id) VALUES ('Books','bks',1);
+INSERT INTO categories (name,code,company_id) VALUES ('Music','msc',1);
+INSERT INTO categories (name,code,company_id) VALUES ('Hardware','hrd',1);
+INSERT INTO categories (name,code,company_id) VALUES ('Software','swr',1);

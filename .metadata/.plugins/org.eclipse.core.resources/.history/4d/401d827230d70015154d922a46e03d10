@@ -1,0 +1,2 @@
+INSERT INTO companies(name)VALUES('nashta firma');
+INSERT INTO departaments(name,company_id)VALUES('Financial',(SELECT id FROM company WHERE name = 'nashta firma'));

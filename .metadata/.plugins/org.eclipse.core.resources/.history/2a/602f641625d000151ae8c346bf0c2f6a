@@ -1,0 +1,36 @@
+package montag;
+
+import java.util.HashSet;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class CrawlerMemory {
+	private LinkedBlockingQueue<String> mLinks;
+	private HashSet<String> mVisited;
+
+	public void CrawlerMemory() {
+		mLinks = new LinkedBlockingQueue<String>();
+		mVisited = new HashSet<String>();
+	}
+
+	public void CrawlerMemory(LinkedBlockingQueue<String> links, HashSet<String> visited) {
+		mLinks = links;
+		mVisited = visited;
+	}
+
+	public LinkedBlockingQueue<String> getLinks() {
+		return mLinks;
+	}
+
+	public void setLinks(LinkedBlockingQueue<String> mLinks) {
+		this.mLinks = mLinks;
+	}
+
+	public HashSet<String> getVisited() {
+		return mVisited;
+	}
+
+	public void setVisited(HashSet<String> mVisited) {
+		this.mVisited = mVisited;
+	}
+
+}

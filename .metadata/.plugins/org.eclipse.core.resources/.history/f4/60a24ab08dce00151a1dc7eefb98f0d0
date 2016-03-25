@@ -1,0 +1,31 @@
+package montag;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class JavaDownloaderMain {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		PrintStream out = System.out;
+		String URL = null;
+		String filename = null;
+		out.println("Enter pic URL");
+		URL = input.nextLine();
+		//out.print("Enter filepath + filename (/s/d/s/filename.extension)");
+		//filename = input.nextLine();
+		//File file = new File(filename);
+		try {
+			JavaDownloader downloader = new JavaDownloader(URL, file);
+			downloader.saveImageToFile();
+		} catch ( IOException e) {
+			out.println("Enter pic URL");
+			URL = input.nextLine();
+			//out.print("Enter filepath + filename (/s/d/s/filename.extension)");
+			//filename = input.nextLine();
+		}
+		input.close();
+		out.close();
+	}
+}

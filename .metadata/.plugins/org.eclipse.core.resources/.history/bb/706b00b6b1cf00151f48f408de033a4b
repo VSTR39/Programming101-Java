@@ -1,0 +1,61 @@
+package montag;
+
+import java.util.LinkedList;
+
+public class Option {
+	enum OptionContent{
+		private String mOption;
+		private boolean mArgumentRequired;
+		private String mOptionArgument;
+
+		public String getOption() {
+			return mOption;
+		}
+
+		public void setOption(String mOption) {
+			this.mOption = mOption;
+		}
+
+		public boolean isArgumentRequired() {
+			return mArgumentRequired;
+		}
+
+		public void setArgumentRequired(boolean mArgumentRequired) {
+			this.mArgumentRequired = mArgumentRequired;
+		}
+
+		public String getOptionArgument() {
+			return mOptionArgument;
+		}
+
+		public void setOptionArgument(String mOptionArgument) {
+			this.mOptionArgument = mOptionArgument;
+		}
+
+	}
+	private LinkedList<OptionContent> mOptions;
+
+	public Option() {
+		this.mOptions = new LinkedList<OptionContent>();
+	}
+
+	public void addOption(OptionContent option) {
+		this.mOptions.add(option);
+	}
+
+	public boolean hasOption(String option) {
+		boolean result = false;
+		for (int i = 0; i < this.mOptions.size(); i++) {
+			if (this.mOptions.get(i).getOption().equals(option)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+
+	public LinkedList<OptionContent> getOptions() {
+		return mOptions;
+	}
+
+}

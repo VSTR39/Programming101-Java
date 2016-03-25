@@ -1,0 +1,7 @@
+package montag;
+
+import java.net.URL;
+
+public class DownloadAFileWithJava {
+	
+}

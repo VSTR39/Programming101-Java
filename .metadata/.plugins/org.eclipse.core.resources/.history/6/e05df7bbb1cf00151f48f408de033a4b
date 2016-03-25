@@ -1,0 +1,10 @@
+package montag;
+
+public class CommandLine {
+	private Option options;
+	private JavaDownloader mJavaDownloader;
+	
+	public void executeCommand(){
+		int i = 0;
+	}
+}

@@ -1,0 +1,58 @@
+package montag;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.imageio.stream.FileImageInputStream;
+import javax.imageio.stream.ImageInputStream;
+
+public class JavaDownloader {
+	private URL mWebsite;
+	private File mFile;
+
+	public JavaDownloader(String site, File file) throws MalformedURLException {
+		mWebsite = new URL(site);
+		mFile = file;
+	}
+
+	public URL getWebsite() {
+		return mWebsite;
+	}
+
+	public void setWebsite(URL mWebsite) {
+		this.mWebsite = mWebsite;
+	}
+
+	public File getFile() {
+		return mFile;
+	}
+
+	public void setFile(File mFile) {
+		this.mFile = mFile;
+	}
+
+	public void saveToFile() throws IOException {
+		BufferedReader input = new BufferedReader(new InputStreamReader(mWebsite.openStream()));
+		FileWriter fileOutput = new FileWriter(mFile);
+		String line = "";
+		while ((line = input.readLine()) != null) {
+			fileOutput.write(line);
+		}
+		input.close();
+		fileOutput.close();
+	}
+
+	public void saveImageToFile() throws IOException {
+		BufferedReader input = new BufferedReader(new InputStreamReader(mWebsite.openStream()));
+		File outputfile = new File("saved.png");
+	    ImageIO.write(bi, "png", outputfile);
+	}
+}

@@ -1,0 +1,9 @@
+package montag;
+
+public class CommandLineParser {
+	/*should return an instance of CommandLine
+	 * basicly its purpose is to verify that a given line
+	 * is an executable command line
+	 */
+
+}

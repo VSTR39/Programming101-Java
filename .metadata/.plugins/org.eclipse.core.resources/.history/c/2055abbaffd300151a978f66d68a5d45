@@ -1,0 +1,36 @@
+package montag;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+public class CrawlerMemory {
+	private CopyOnWriteArrayList<String> mLinks;
+	// private CopyOnWriteArraySet<String> mVisited;
+
+	public CrawlerMemory() {
+		// this.mLinks = new CopyOnWriteArrayList<String>();
+		// this.mVisited = new CopyOnWriteArraySet<String>();
+	}
+
+	public CrawlerMemory(CopyOnWriteArrayList<String> links, CopyOnWriteArraySet<String> visited) {
+		this.mLinks = links;
+		// this.mVisited = visited;
+	}
+
+	public CopyOnWriteArrayList<String> getLinks() {
+		return mLinks;
+	}
+
+	public void setLinks(CopyOnWriteArrayList<String> mLinks) {
+		this.mLinks = mLinks;
+	}
+
+	public CopyOnWriteArraySet<String> getVisited() {
+		return mVisited;
+	}
+
+	public void setVisited(CopyOnWriteArraySet<String> mVisited) {
+		this.mVisited = mVisited;
+	}
+
+}

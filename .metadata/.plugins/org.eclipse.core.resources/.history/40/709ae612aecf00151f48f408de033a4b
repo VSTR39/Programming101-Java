@@ -1,0 +1,16 @@
+package montag;
+
+import java.util.LinkedList;
+
+public class Option {
+	private LinkedList<OptionContent> mOptions;
+
+	public Option() {
+		this.mOptions = new LinkedList<OptionContent>();
+	}
+
+	public void addOption(OptionContent option) {
+		this.mOptions.add(option);
+	}
+
+}

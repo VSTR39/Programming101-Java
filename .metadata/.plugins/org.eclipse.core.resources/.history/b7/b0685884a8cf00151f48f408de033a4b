@@ -1,0 +1,32 @@
+package montag;
+
+public class Options {
+	private String mOption;
+	private boolean mArgumentRequired;
+	private String mOptionArgument;
+
+	public String getOption() {
+		return mOption;
+	}
+
+	public void setOption(String mOption) {
+		this.mOption = mOption;
+	}
+
+	public boolean isArgumentRequired() {
+		return mArgumentRequired;
+	}
+
+	public void setArgumentRequired(boolean mArgumentRequired) {
+		this.mArgumentRequired = mArgumentRequired;
+	}
+
+	public String getOptionArgument() {
+		return mOptionArgument;
+	}
+
+	public void setOptionArgument(String mOptionArgument) {
+		this.mOptionArgument = mOptionArgument;
+	}
+
+}

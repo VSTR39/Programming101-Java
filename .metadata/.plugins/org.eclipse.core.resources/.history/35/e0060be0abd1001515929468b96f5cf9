@@ -1,0 +1,19 @@
+package freitag;
+
+import java.util.Scanner;
+
+import javax.security.auth.login.LoginContext;
+
+public class JaasExample {
+	public static void main(String[] args) {
+		System.out.println("blabla first Jaas");
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Enter username:");
+		String username = scan.next();
+		System.out.println("Enter password");
+		String password = scan.next();
+
+		LoginContext lc = new LoginContext("JaasConfiguration", new MyCustomCallbackClass());
+	}
+}

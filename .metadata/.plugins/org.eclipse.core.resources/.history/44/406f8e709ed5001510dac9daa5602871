@@ -1,0 +1,7 @@
+CREATE DATABASE OurCompany;
+
+USE DATABASE OurCompany;
+
+CREATE TABLE companies(
+name VARCHAR(80) NOT NULL UNIQUE
+)Engine = InnoDB;

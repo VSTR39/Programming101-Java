@@ -1,0 +1,17 @@
+package montag;
+
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+public class CrawlerMemory {
+	private LinkedBlockingQueue<String> mLinks;
+	private Set<String> mVisited;
+	
+	public void CrawlerMemory(){
+		mLinks = new LinkedBlockingQueue<String>();
+		mVisited = new Set<String>();
+	}
+
+}

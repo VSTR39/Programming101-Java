@@ -1,0 +1,15 @@
+package montag;
+
+import java.util.HashSet;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class CrawlerMemory {
+	private LinkedBlockingQueue<String> mLinks;
+	private HashSet<String> mVisited;
+
+	public void CrawlerMemory() {
+		mLinks = new LinkedBlockingQueue<String>();
+		mVisited = new HashSet<String>();
+	}
+
+}

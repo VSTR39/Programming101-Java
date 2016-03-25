@@ -1,0 +1,2 @@
+INSERT INTO companies(name)VALUES('nashta firma');
+INSERT INTO categories(name,code,company_id)VALUES('loans','ln',(SELECT id FROM companies WHERE companies.id = company_id));

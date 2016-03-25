@@ -1,0 +1,4 @@
+/** Login Configuration for the JAAS Sample Application **/
+lqlqlqConfiguration {
+	My.Custom.SampleLoginModule required debug = true;
+};

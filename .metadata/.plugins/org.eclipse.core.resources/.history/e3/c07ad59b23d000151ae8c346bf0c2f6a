@@ -1,0 +1,35 @@
+package montag;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.http.client.methods.HttpGet;
+
+public class SimpleWebsiteCrawler {
+
+	private static List<String> getAllLinks(String content) {
+		ArrayList<String> resultList = new ArrayList<>();
+		String regex = "<a.*?href=\"((?!javascript).*?)\".*?>";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(content);
+		while (matcher.find()) {
+			resultList.add(matcher.group(1));
+		}
+		return resultList;
+	}
+
+	public boolean crawl(URL haystack, String needle) {
+		boolean result = false;
+		
+		return result;
+	}
+
+	public static void main(String[] args) {
+		HttpGet httpget = new HttpGet("http://ebusiness.free.bg");
+		System.out.println(httpget.getRequestLine());
+		
+	}
+}

@@ -1,0 +1,15 @@
+package montag;
+
+import java.util.Queue;
+import java.util.Set;
+
+public class CrawlerMemory {
+	private Queue<String> mLinks;
+	private Set<String> mVisited;
+	
+	public void CrawlerMemory(){
+		mLinks = new Queue<String>();
+		mVisited = new Set<String>();
+	}
+
+}

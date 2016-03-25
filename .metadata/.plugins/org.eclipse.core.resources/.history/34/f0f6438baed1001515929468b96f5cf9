@@ -1,0 +1,5 @@
+package my.custom.SampleLoginModule;
+
+public class SampleLoginModule {
+
+}

@@ -1,0 +1,19 @@
+INSERT INTO companies(name)VALUES('nashta firma');
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Vasil','vstr93@abv.bg',NULL,'1993-11-17',NULL,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Pesho','lqudas@abv.bg',1,'1999-12-12',1,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Tosho','ludas@abv.bg',1,'1999-11-12',1,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('gosho','gludas@abv.bg',1,'1999-10-12',1,
+(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO departaments(name,company_id,manager_id)
+VALUES('Financial',2,(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO departaments(name,company_id,manager_id)
+VALUES('Sales',3,(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO departaments(name,company_id,manager_id)
+VALUES('Production',4,(SELECT id FROM companies WHERE name = 'nashta firma'));

@@ -1,0 +1,5 @@
+package mittwoch;
+
+public class ServletHelloWorld {
+
+}

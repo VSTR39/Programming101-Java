@@ -1,0 +1,10 @@
+package montag;
+
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class JavaDownloaderMain {
+	Scanner input = new Scanner(System.in);
+	PrintStream out = System.out;
+
+}

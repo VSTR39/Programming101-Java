@@ -1,0 +1,8 @@
+INSERT INTO companies(name)VALUES('nashta firma');
+INSERT INTO departaments(name,company_id)VALUES('Financial',(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO departaments(name,company_id)VALUES('Sales',(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO departaments(name,company_id)VALUES('Production',(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('Vasil','vstr93@abv.bg',NULL,'17/11/1993',NULL,(SELECT id FROM companies WHERE name = 'nashta firma'));
+INSERT INTO employees(name,email,status,birthday,manager_id,company_id)
+VALUES('ne go znam','lqudas@abv.bg',1,'1999-12-12',(SELECT id FROM employees WHERE status == NULL AND manager_id == NULL),(SELECT id FROM companies WHERE name = 'nashta firma'));

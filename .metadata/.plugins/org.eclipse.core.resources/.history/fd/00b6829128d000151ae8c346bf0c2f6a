@@ -1,0 +1,70 @@
+package montag;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.http.client.methods.HttpGet;
+
+public class SimpleWebsiteCrawler {
+	private CrawlerMemory mCrawlerMemory;
+	private String mNeedle;
+	private String mHaystack;
+
+	public SimpleWebsiteCrawler(String needle, String haystack) throws InterruptedException {
+		this.mNeedle = needle;
+		this.mHaystack = haystack;
+		this.mCrawlerMemory.setLinks(new LinkedBlockingQueue<String>());
+		this.mCrawlerMemory.getLinks().put(haystack);
+		this.mCrawlerMemory.setVisited(new HashSet<String>());
+	}
+
+	public String getNeedle() {
+		return mNeedle;
+	}
+
+	public void setNeedle(String mNeedle) {
+		this.mNeedle = mNeedle;
+	}
+
+	public String getHaystack() {
+		return mHaystack;
+	}
+
+	public void setHaystack(String mHaystack) {
+		this.mHaystack = mHaystack;
+	}
+
+	private static List<String> getAllLinks(String content) {
+		ArrayList<String> resultList = new ArrayList<>();
+		String regex = "<a.*?href=\"((?!javascript).*?)\".*?>";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(content);
+		while (matcher.find()) {
+			resultList.add(matcher.group(1));
+		}
+		return resultList;
+	}
+
+	public static void crawl(URL haystack, String needle) {
+		// boolean result = false;
+		boolean flag = false;
+		System.out.println(haystack.getHost());
+		// return result;
+	}
+
+	public static void main(String[] args) throws MalformedURLException {
+		HttpGet httpget = new HttpGet("http://ebusiness.free.bg");
+		System.out.println(httpget.getURI());
+		URL url = new URL("http://ebusiness.free.bg");
+		crawl(url, "lqlqlq");
+
+	}
+}

@@ -1,0 +1,4 @@
+/** Login Configuration for the JAAS Sample Application **/
+JaasConfiguration {
+	sample.module.SampleLoginModule required debug = true;
+};
